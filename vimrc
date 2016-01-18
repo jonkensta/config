@@ -30,13 +30,18 @@ set guioptions+=LlrRb
 set guioptions-=LlrRb
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
-
-" grep will sometimes skip displaying the file name if you search in a singe
-" file. This will confuse Latex-Suite. Set your grep program to always
-" generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" Starting with Vim 7, the filetype of empty .tex files defaults to 'plaintex'
-" instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
+" Syntastic recommended settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = '/usr/bin/python2'
+let g:syntastic_html_tidy_exec = 'tidy5'
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeDirArrows=0
+" vim-devicons
+set encoding=utf8"
