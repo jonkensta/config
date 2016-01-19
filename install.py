@@ -12,7 +12,7 @@ if not os.path.isdir(args.install_dir):
 
 args.install_dir = os.path.abspath(args.install_dir)
 
-dotconfigs = ['xmonad', 'vimrc', 'xmobarrc', 'inputrc', 'xinitrc', 'gitconfig']
+dotconfigs = ['xmonad', 'vimrc', 'xmobarrc', 'inputrc', 'xinitrc', 'gitconfig', 'tmux.conf']
 for config in dotconfigs:
     source = os.path.abspath(config)
     link_name = os.path.join(args.install_dir, '.' + config)
