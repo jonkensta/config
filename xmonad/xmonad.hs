@@ -4,7 +4,6 @@ import qualified Data.Map as M
 import Graphics.X11.Xlib
 import XMonad.Util.EZConfig
 import XMonad.Util.Run(spawnPipe)
-import XMonad.Hooks.SetWMName
 import XMonad.Hooks.DynamicLog
 import XMonad.Actions.PhysicalScreens
 
@@ -24,8 +23,7 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 -- Main configuration, override the defaults to your liking.
 myConfig = defaultConfig 
-         { terminal = "st"
-         , startupHook = setWMName "LG3D"
+         { terminal = "xfce4-terminal"
          , keys = myKeys <+> keys defaultConfig
          }
          `additionalKeysP`
