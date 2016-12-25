@@ -30,16 +30,29 @@ set guioptions+=LlrRb
 set guioptions-=LlrRb
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
+set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
 " Syntastic recommended settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["html"] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '/usr/bin/python2'
-let g:syntastic_html_tidy_exec = 'tidy5'
+
+" Disable annoying errors
+let g:syntastic_c_check_header = 0
+let g:syntastic_c_no_include_search = 1
+let g:syntastic_c_compiler = 'i686-w64-mingw32-gcc'
+
+let g:syntastic_cpp_check_header = 0
+let g:syntastic_cpp_no_include_search = 1
+let g:syntastic_cpp_compiler = 'i686-w64-mingw32-g++'
+
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrows=0
