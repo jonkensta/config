@@ -18,7 +18,7 @@ for config in dotconfigs:
     link_name = os.path.join(args.install_dir, '.' + config)
     try:
         os.symlink(source, link_name)
-    except FileExistsError:
+    except OSError:
         print("Config file {0} already exists; skipping ...".format(config))
 
 print("Done!")
