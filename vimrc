@@ -4,6 +4,8 @@ execute pathogen#infect()
 colorscheme desert
 " syntax highlighting
 syntax on
+autocmd BufNewFile,BufRead SConstruct set syntax=python
+autocmd BufNewFile,BufRead SConscript set syntax=python
 " activates indenting for files
 filetype plugin indent on
 " auto indenting
@@ -25,6 +27,10 @@ set ruler
 " remove annoying swap files and ~files
 set noswapfile
 set nobackup
+" vim-devicons
+set encoding=utf8"
+" ignore generated files
+set wildignore=*.o,*~,*.pyc
 " disable scrollbars in GUI mode
 set guioptions+=LlrRb
 set guioptions-=LlrRb
@@ -53,8 +59,5 @@ let g:syntastic_cpp_check_header = 0
 let g:syntastic_cpp_no_include_search = 1
 let g:syntastic_cpp_compiler = 'i686-w64-mingw32-g++'
 
-" NERDTree
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeDirArrows=0
-" vim-devicons
-set encoding=utf8"
+map <C-n> :Explore<CR>
+

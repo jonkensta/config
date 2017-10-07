@@ -1,0 +1,4 @@
+setxkbmap -option compose:ralt
+/usr/bin/xscreensaver -no-splash &
+xbindkeys &
+export DISPLAY=:0.0
