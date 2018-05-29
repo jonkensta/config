@@ -1,12 +1,17 @@
 [user]
-	email = jonstarr@utexas.edu
-	name = Jonathan Starr
+    email = jstarr@carnegietechnologies.com
+    name = Jonathan Starr]
 [core]
-	editor = vim
+	editor = nvim
+
 [push]
-	default = simple
+    default = simple
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[diff]
+    tool = vimdiff
+[difftool]
+	prompt = false

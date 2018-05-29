@@ -1,4 +1,19 @@
-setxkbmap -option compose:ralt
-/usr/bin/xscreensaver -no-splash &
-xbindkeys &
-export DISPLAY=:0.0
+#!/bin/sh
+# Script to configure X, start common apps, and start xmonad.
+# Author: Vic Fryzel
+# http://github.com/vicfryzel/xmonad-config
+
+# java behaves badly in non-reparenting window managers (e.g. xmonad)
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Configure X
+# xbindkeys &
+setxkbmap -option "ctrl:nocaps" &
+setxkbmap -option "compose:ralt" &
+xsetroot -cursor_name left_ptr -solid midnightblue &
+
+slack &
+chromium &
+
+# Start screensaver
+xscreensaver -no-splash &
