@@ -7,13 +7,9 @@
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Configure X
-# xbindkeys &
-setxkbmap -option "ctrl:nocaps" &
-setxkbmap -option "compose:ralt" &
+xbindkeys &
+setxkbmap -option ctrl:nocaps
+setxkbmap -option compose:ralt
 xsetroot -cursor_name left_ptr -solid midnightblue &
-
-slack &
-chromium &
-
-# Start screensaver
-xscreensaver -no-splash &
+xss-lock -- i3lock -n &
+xautolock -time 10 -locker "i3lock -n" &
