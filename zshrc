@@ -51,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux battery git tmux history-substring-search python vi-mode virtualenv)
+plugins=(archlinux git tmux python history-substring-search vi-mode virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
