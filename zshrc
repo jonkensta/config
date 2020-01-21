@@ -91,3 +91,10 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+
+[ -d $HOME/source/esp-idf ] && export IDF_PATH=$HOME/source/esp-idf
+[ -d $HOME/.local/bin:$PATH ] && export PATH=$HOME/.local/bin:$PATH
+
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
