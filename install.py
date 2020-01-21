@@ -1,33 +1,54 @@
+#!/usr/bin/env python
+
+"""
+Script for installing configuration files in a home directory.
+"""
+
 import os
 import argparse
 
-parser = argparse.ArgumentParser(description='Install configuration files.')
-parser.add_argument('--install_dir', type=str, default=os.path.expanduser('~'),
-                    help='base directory to install the configuration files.')
-args = parser.parse_args()
 
-if not os.path.isdir(args.install_dir):
-    msg = "{0} is not a directory".format(args.install_dir)
-    raise ValueError(msg)
+def main():
+    """Install configuration files."""
+    parser = argparse.ArgumentParser(description=main.__doc__)
+    parser.add_argument(
+        "--root",
+        default=os.path.expanduser("~"),
+        help="base directory to install the configuration files.",
+    )
+    args = parser.parse_args()
 
-args.install_dir = os.path.abspath(args.install_dir)
+    if not os.path.isdir(args.root):
+        raise ValueError(f"{args.root} is not a directory")
 
-dotconfigs = [
-    'vimrc',
-    'inputrc',
-    'xinitrc',
-    'gitconfig',
-    'tmux.conf',
-    'zshrc',
-    'xprofile',
+    root = os.path.abspath(args.root)
+
+    configs = [
+        ("vimrc", ".vimrc"),
+        ("zshrc", ".zshrc"),
+        ("inputrc", ".inputrc"),
+        ("xinitrc", ".xinitrc"),
+        ("Xmodmap", ".Xmodmap"),
+        ("xprofile", ".xprofile"),
+        ("gitconfig", ".gitconfig"),
+        ("tmux.conf", ".tmux.conf"),
+        ("xbindkeysrc", ".xbindkeysrc"),
+        ("init.vim", ".config/nvim/init.vim"),
     ]
 
-for config in dotconfigs:
-    source = os.path.abspath(config)
-    link_name = os.path.join(args.install_dir, '.' + config)
-    try:
-        os.symlink(source, link_name)
-    except OSError:
-        print("Config file {0} already exists; skipping ...".format(config))
+    for src, dst in configs:
+        dst = os.path.join(root, dst)
 
-print("Done!")
+        dst_dir, _ = os.path.split(dst)
+        os.makedirs(dst_dir, exist_ok=True)
+
+        try:
+            os.symlink(src, dst)
+        except OSError:
+            print(f"A link to file '{src}' already exists at '{dst}'; skipping ...")
+
+    print("Done!")
+
+
+if __name__ == "__main__":
+    main()
