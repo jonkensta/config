@@ -1,8 +1,9 @@
 [user]
     email = jstarr@carnegietechnologies.com
-    name = Jonathan Starr]
+    name = Jonathan Starr
 [core]
 	editor = nvim
+	autocrlf = false
 
 [push]
     default = simple
@@ -15,3 +16,5 @@
     tool = vimdiff
 [difftool]
 	prompt = false
+[alias]
+	conflicted = !nvim +Conflicted
