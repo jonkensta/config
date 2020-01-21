@@ -33,7 +33,9 @@ def main():
         ("gitconfig", ".gitconfig"),
         ("tmux.conf", ".tmux.conf"),
         ("xbindkeysrc", ".xbindkeysrc"),
+        ("i3_config", ".config/i3/config"),
         ("init.vim", ".config/nvim/init.vim"),
+        ("i3status_config", ".config/i3status/config"),
         ("redshift.conf", ".config/redshift/redshift.conf"),
     ]
 
