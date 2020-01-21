@@ -40,7 +40,8 @@ def main():
     ]
 
     for src, dst in configs:
-        dst = os.path.join(root, dst)
+        src = os.path.abspath(src)
+        dst = os.path.abspath(os.path.join(root, dst))
 
         dst_dir, _ = os.path.split(dst)
         os.makedirs(dst_dir, exist_ok=True)
