@@ -34,6 +34,7 @@ def main():
         ("tmux.conf", ".tmux.conf"),
         ("xbindkeysrc", ".xbindkeysrc"),
         ("init.vim", ".config/nvim/init.vim"),
+        ("redshift.conf", ".config/redshift/redshift.conf"),
     ]
 
     for src, dst in configs:
