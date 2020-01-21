@@ -1,1 +1,3 @@
+.flake8
 .lvimrc
+.mypy_cache
