@@ -10,6 +10,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 nm-applet &
 cbatticon &
 xbindkeys &
+udiskie -s &
 setxkbmap -option ctrl:nocaps
 setxkbmap -option compose:ralt
 xsetroot -cursor_name left_ptr -solid midnightblue &
