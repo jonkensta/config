@@ -18,9 +18,11 @@ Arch Packages
 sudo pacman -S \
     git vim neovim tmux \
     i3-wm i3lock i3status \
+    powerline ttf-font-awesome \
     xbindkeys xorg-xmodmap redshift \
-    cbatticon network-manager-applet \
-    zsh powerline zsh-syntax-highlighting zsh-completions zsh-autosuggestions
+    xfce4-screenshooter xfce4-terminal \
+    cbatticon network-manager-applet udiskie \
+    zsh zsh-syntax-highlighting zsh-completions zsh-autosuggestions
 ```
 
 Vundle
