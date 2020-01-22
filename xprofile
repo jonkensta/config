@@ -7,6 +7,8 @@
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Configure X
+nm-applet &
+cbatticon &
 xbindkeys &
 setxkbmap -option ctrl:nocaps
 setxkbmap -option compose:ralt

@@ -19,6 +19,7 @@ sudo pacman -S \
     git vim neovim tmux \
     i3-wm i3lock i3status \
     xbindkeys xorg-xmodmap redshift \
+    cbatticon network-manager-applet \
     zsh powerline zsh-syntax-highlighting zsh-completions zsh-autosuggestions
 ```
 
