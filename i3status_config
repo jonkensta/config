@@ -1,10 +1,31 @@
 general {
         colors = true
         interval = 5
+        separator = false
 }
 
+order += "cpu_temperature 0"
+order += "memory"
+order += "disk /"
 order += "tztime local"
 
+cpu_temperature 0 {
+    format = " %degrees°C"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
+    separator = false
+}
+
+memory {
+    format = " %used"
+    separator = false
+}
+
+disk "/" {
+    format = " %free"
+    separator = false
+}
+
 tztime local {
-        format = " %Y-%m-%d  %H:%M:%S"
+    format = " %Y-%m-%d  %H:%M:%S"
+    separator = false
 }
