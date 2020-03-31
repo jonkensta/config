@@ -25,6 +25,16 @@ sudo pacman -S \
     zsh zsh-syntax-highlighting zsh-completions zsh-autosuggestions
 ```
 
+Install oh-my-zsh
+-----------------
+
+```bash
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+chsh -s /bin/zsh
+```
+
+You may need to fix the symlink to .zshrc if it is overwritten.
+
 Vundle
 ------
 
@@ -43,3 +53,12 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 Then `prefix` + <kdb>I</kdb> within tmux to install plugins.
+
+User groups
+-----------
+
+```bash
+usermod -a -G sys,docker,audio,wheel,uucp,lpadmin,gpiouser jstarr
+```
+
+Creating any group that does not exist already.
