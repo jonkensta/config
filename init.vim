@@ -19,17 +19,24 @@ call vundle#begin('~/.config/nvim/bundle')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'embear/vim-localvimrc'
 Plugin 'sjl/badwolf'
-Plugin 'neomake/neomake'
+Plugin 'dense-analysis/ale'
+Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'itchyny/lightline.vim'
-Plugin 'vimwiki/vimwiki'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'junegunn/fzf'
+Plugin 'christoomey/vim-conflicted'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
 
 colorscheme badwolf
 filetype plugin indent on  " allows auto-indenting depending on file type
+
+map <C-n> :NERDTreeToggle<CR>
