@@ -16,8 +16,9 @@ Arch Packages
 
 ```bash
 sudo pacman -S \
-    git vim neovim tmux \
     i3-wm i3lock i3status \
+    git vi vim neovim tmux \
+    wget moreutils base-devel \
     powerline ttf-font-awesome \
     xbindkeys xorg-xmodmap redshift \
     xfce4-screenshooter xfce4-terminal \
