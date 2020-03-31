@@ -22,7 +22,7 @@ sudo pacman -S \
     powerline ttf-font-awesome \
     xbindkeys xorg-xmodmap redshift \
     xfce4-screenshooter xfce4-terminal \
-    cbatticon network-manager-applet udiskie \
+    cbatticon inetutils network-manager-applet udiskie \
     zsh zsh-syntax-highlighting zsh-completions zsh-autosuggestions
 ```
 
