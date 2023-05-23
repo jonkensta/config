@@ -75,7 +75,8 @@ xbindkeys xorg-xmodmap \
 xfce4-screenshooter xfce4-terminal \
 redshift inetutils cbatticon network-manager-applet udiskie \
 zsh zsh-syntax-highlighting zsh-completions zsh-autosuggestions \
-cpupower intel-ucode thermald 
+cpupower intel-ucode thermald \
+mlocate fzf
 ```
 
 Install oh-my-zsh
