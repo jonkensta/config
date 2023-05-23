@@ -1,5 +1,5 @@
 [user]
-    email = jstarr@carnegietechnologies.com
+	email = github@jstarr.me
     name = Jonathan Starr
 [core]
 	editor = nvim
@@ -18,3 +18,5 @@
 	prompt = false
 [alias]
 	conflicted = !nvim +Conflicted
+[init]
+	defaultBranch = main
