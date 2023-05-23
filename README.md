@@ -163,3 +163,14 @@ sudo systemctl enable --now reflector
 ```bash
 sudo systemctl enable --now thermald
 ```
+
+`ipython`
+---------
+Use the following in the `ipython` configuration file:
+```python
+## Shortcut style to use at the prompt. 'vi' or 'emacs'.
+c.TerminalInteractiveShell.editing_mode = 'vi'
+
+## Set the editor used by IPython (default to $EDITOR/vi/notepad).
+c.TerminalInteractiveShell.editor = 'vi'
+```
