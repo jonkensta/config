@@ -4,10 +4,12 @@ This repository contains the config that I use for setting up a user on Arch.
 
 Install dotfiles
 ----------------
-Within this repo:
-```bash
-python install.py
+The dotfiles are organized as stow packages and can be installed as:
 ```
+stow --no-folding --dotfiles -v -t ~ dotfiles
+stow --no-folding --dotfiles -v -t ~/.config config
+```
+
 
 Create Swapfile
 ---------------
