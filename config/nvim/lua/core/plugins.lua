@@ -56,6 +56,7 @@ return packer.startup(function(use)
     use 'altercation/vim-colors-solarized'
 
     use 'scrooloose/nerdtree'
+    use 'vim-airline/vim-airline'
     use 'airblade/vim-gitgutter'
     use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
 
