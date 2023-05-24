@@ -5,6 +5,7 @@ require("mason-lspconfig").setup({
         "clangd",
         "lua_ls",
         "pylsp",
+        "eslint",
         "rust_analyzer",
     },
 })
