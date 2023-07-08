@@ -22,10 +22,7 @@ local on_attach = function(client, bufnr)
     end
 end
 
--- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
--- Language servers
 local lspconfig = require('lspconfig')
 
 lspconfig.bashls.setup({
@@ -34,10 +31,9 @@ lspconfig.bashls.setup({
 })
 
 lspconfig.clangd.setup({
-    on_attach = on_attach,
+    --    on_attach = on_attach,
     capabilities = capabilities,
-    --filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" }
-    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" } -- remove proto filetype
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" }
 })
 
 lspconfig.lua_ls.setup({
@@ -68,6 +64,12 @@ lspconfig.rust_analyzer.setup({
 })
 
 lspconfig.eslint.setup({
+    on_attach = on_attach,
+    capabilities = capabilities
+})
+
+lspconfig.tsserver.setup({
+    on_attach = on_attach,
     capabilities = capabilities
 })
 
@@ -78,6 +80,8 @@ null_ls.setup({
     capabilities = capabilities,
     sources = {
         null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.rustfmt,
         -- null_ls.builtins.diagnostics.flake8,
         -- null_ls.builtins.diagnostics.pydocstyle,
         -- null_ls.builtins.diagnostics.pylint,

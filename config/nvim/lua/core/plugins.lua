@@ -45,11 +45,15 @@ return packer.startup(function(use)
     --> run manually with ':PackerSync'
     use 'wbthomason/packer.nvim'
 
+    --> tpope's vim packages
     use {
         'tpope/vim-sensible',
         'tpope/vim-surround',
         'tpope/vim-fugitive',
     }
+
+    --> quality of life
+    use 'ctrlpvim/ctrlp.vim'
 
     --> Color theme.
     use 'itchyny/lightline.vim'
@@ -57,7 +61,7 @@ return packer.startup(function(use)
 
     use 'scrooloose/nerdtree'
     use 'vim-airline/vim-airline'
-    use 'airblade/vim-gitgutter'
+    --> use 'airblade/vim-gitgutter'
     use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
 
     --> context highlighting
@@ -65,20 +69,24 @@ return packer.startup(function(use)
 
     --> lsp, linters, dignostics
     use {
-        'williamboman/mason.nvim',         --> :Mason
+        'williamboman/mason.nvim', --> :Mason
         'williamboman/mason-lspconfig.nvim',
-        'neovim/nvim-lspconfig',           --> :LspInfo
-        'jose-elias-alvarez/null-ls.nvim', --> :NullLsInfo
-        'nvim-lua/plenary.nvim',           --> prerequisite for null-ls
-        run = ":MasonUpdate"               -- :MasonUpdate updates registry contents
+        'neovim/nvim-lspconfig',
+        'jose-elias-alvarez/null-ls.nvim',
+        'nvim-lua/plenary.nvim', --> prerequisite for null-ls
+        run = ":MasonUpdate"     -- :MasonUpdate updates registry contents
     }
 
     --> autocomplete + snippets
     use {
-        'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
         'hrsh7th/cmp-cmdline', --> this doesn't seem to work
-        'L3MON4D3/LuaSnip',
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-vsnip',
+        'hrsh7th/vim-vsnip',
+        'rafamadriz/friendly-snippets',
     }
 
     -- Automatically set up your configuration after cloning packer.nvim
