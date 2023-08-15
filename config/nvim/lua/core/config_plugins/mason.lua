@@ -7,5 +7,6 @@ require("mason-lspconfig").setup({
         "pylsp",
         "eslint",
         "rust_analyzer",
+        "clojure_lsp",
     },
 })
