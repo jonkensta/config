@@ -1,6 +1,3 @@
---> auto-format when saving
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
 local on_attach = function(client, bufnr)
     --> keymaps
     --vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
@@ -9,16 +6,8 @@ local on_attach = function(client, bufnr)
     --vim.keymap.set("n", "F", vim.lsp.buf.format, {})
     --vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
 
-    --> auto-format when saving
     if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-                vim.lsp.buf.format({ bufnr = bufnr })
-            end,
-        })
+        vim.api.nvim_create_user_command("LspFormat", vim.lsp.buf.format, {})
     end
 end
 
