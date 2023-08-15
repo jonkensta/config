@@ -70,9 +70,7 @@ return packer.startup(function(use)
         'williamboman/mason.nvim', --> :Mason
         'williamboman/mason-lspconfig.nvim',
         'neovim/nvim-lspconfig',
-        'jose-elias-alvarez/null-ls.nvim',
-        'nvim-lua/plenary.nvim', --> prerequisite for null-ls
-        run = ":MasonUpdate"     -- :MasonUpdate updates registry contents
+        run = ":MasonUpdate" -- :MasonUpdate updates registry contents
     }
 
     --> autocomplete + snippets
