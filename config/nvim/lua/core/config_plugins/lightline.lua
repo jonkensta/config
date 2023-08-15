@@ -1,1 +1,1 @@
-vim.g.lightline = { colorscheme = 'solarized' }
+vim.g.lightline = { colorscheme = 'gruvbox' }

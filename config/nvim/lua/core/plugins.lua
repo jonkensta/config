@@ -54,11 +54,8 @@ return packer.startup(function(use)
 
     --> quality of life
     use 'ctrlpvim/ctrlp.vim'
-
-    --> Color theme.
     use 'itchyny/lightline.vim'
-    use 'altercation/vim-colors-solarized'
-
+    use 'morhetz/gruvbox'
     use 'scrooloose/nerdtree'
     use 'vim-airline/vim-airline'
     --> use 'airblade/vim-gitgutter'
