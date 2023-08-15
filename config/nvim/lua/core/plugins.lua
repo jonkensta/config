@@ -58,7 +58,6 @@ return packer.startup(function(use)
     use 'morhetz/gruvbox'
     use 'scrooloose/nerdtree'
     use 'vim-airline/vim-airline'
-    --> use 'airblade/vim-gitgutter'
     use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
 
     --> context highlighting
@@ -78,7 +77,7 @@ return packer.startup(function(use)
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline', --> this doesn't seem to work
+        'hrsh7th/cmp-cmdline',
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-vsnip',
         'hrsh7th/vim-vsnip',
