@@ -11,8 +11,9 @@ local on_attach = function(client, bufnr)
     -- Disable syntax highlighting through LSP.
     client.server_capabilities.semanticTokensProvider = nil
 
+    -- Create command `LspFormat` when LSP formatting is available.
     if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_create_user_command("LspFormat", vim.lsp.buf.format, {})
+        vim.api.nvim_create_user_command("LspFormat", "lua vim.lsp.buf.format({ async = true })", {})
     end
 end
 
