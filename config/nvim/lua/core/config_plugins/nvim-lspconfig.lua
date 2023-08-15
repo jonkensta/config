@@ -6,6 +6,8 @@ local on_attach = function(client, bufnr)
     --vim.keymap.set("n", "F", vim.lsp.buf.format, {})
     --vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
 
+    vim.api.nvim_create_user_command("LspRename", "lua vim.lsp.buf.rename()", {})
+
     -- Disable syntax highlighting through LSP.
     client.server_capabilities.semanticTokensProvider = nil
 
