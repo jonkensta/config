@@ -66,6 +66,7 @@ return packer.startup(function(use)
 
     --> context highlighting
     use 'nvim-treesitter/nvim-treesitter'
+    use 'HiPhish/rainbow-delimiters.nvim'
 
     --> lsp, linters, dignostics
     use {
