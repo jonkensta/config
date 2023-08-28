@@ -61,7 +61,13 @@ return packer.startup(function(use)
     use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
 
     --> context highlighting
-    use 'nvim-treesitter/nvim-treesitter'
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    }
     use 'HiPhish/rainbow-delimiters.nvim'
 
     --> lsp, linters, dignostics
