@@ -7,17 +7,45 @@ local on_attach = function(client, bufnr)
 
     vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
-    vim.keymap.set('n', '<leader>wl', function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, opts)
+
+    local print_workspace_folders = function()
+        print(vim.print(vim.lsp.buf.list_workspace_folders()))
+    end
+
+    vim.keymap.set('n', '<leader>wl', print_workspace_folders, opts)
 
     vim.keymap.set('n', '<leader>K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', '<leader><C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
 
-    vim.api.nvim_create_user_command("LspRename", "lua vim.lsp.buf.rename()", {})
-    vim.api.nvim_create_user_command("LspFormat", "lua vim.lsp.buf.format({ async = true })", {})
+    vim.api.nvim_create_user_command("LspRename", "lua vim.lsp.buf.rename()", {
+        desc = "Rename a symbol using attached language-server"
+    })
+
+    local lsp_format = function(data)
+        local lsp_opts = {
+            async = true
+        }
+
+        for k, v in pairs(opts) do
+            lsp_opts[k] = v
+        end
+
+        if data.range > 0 then
+            lsp_opts.range = {
+                ["start"] = { data.line1, 0 },
+                ["end"] = { data.line2, 0 },
+            }
+        end
+
+        vim.lsp.buf.format(lsp_opts)
+    end
+
+    vim.api.nvim_create_user_command("LspFormat", lsp_format, {
+        desc = "Format buffer using attached language-server.",
+        range = true
+    })
 
     -- Disable syntax highlighting through LSP.
     client.server_capabilities.semanticTokensProvider = nil
