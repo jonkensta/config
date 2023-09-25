@@ -85,27 +85,6 @@ lspconfig.lua_ls.setup({
 lspconfig.pylsp.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    settings = {
-        pylsp = {
-            plugins = {
-                pylint = {
-                    enabled = true,
-                },
-                pycodestyle = {
-                    enabled = true,
-                },
-                flake8 = {
-                    enabled = true,
-                },
-                yapf = {
-                    enabled = true,
-                },
-                black = {
-                    enabled = true,
-                },
-            },
-        },
-    },
 })
 
 lspconfig.rust_analyzer.setup({
