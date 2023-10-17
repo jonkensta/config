@@ -51,56 +51,55 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux colorize colored-man-pages python history-substring-search vi-mode virtualenv zsh-256color systemd fzf)
+plugins=(archlinux colorize colored-man-pages python vi-mode virtualenv zsh-256color systemd fzf)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# System FZF configuration
+for plugin in "completion" "key-bindings"
+do
+    local filepath=/usr/share/fzf/$plugin.zsh
+    [[ -f $filepath ]] && source $filepath
+done
+
+# System Z configuration
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
+for plugin in "autosuggestions" "syntax-highlighting" "history-substring-search";
+do
+    local filepath=/usr/share/zsh/plugins/zsh-$plugin.zsh
+    [[ -f $filepath ]] && source $filepath
+done
+
+# System ZSH plugins
+[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh ] && source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export VISUAL='nvim'
+export EDITOR='nvim'
+set -o vi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-set -o vi
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # bind k and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-export VISUAL=nvim
-export EDITOR="$VISUAL"
-
 [ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
-
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-
-[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+[ -d $HOME/.cargo/bin ] && export PATH=$HOME/.cargo/bin:$PATH
 
 export npm_config_prefix="$HOME/.local"
 
