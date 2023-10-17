@@ -58,7 +58,11 @@ return packer.startup(function(use)
     use 'morhetz/gruvbox'
     use 'scrooloose/nerdtree'
     use 'vim-airline/vim-airline'
-    use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
+
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.4',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
 
     --> context highlighting
     use {
