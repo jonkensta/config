@@ -61,8 +61,12 @@ return packer.startup(function(use)
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
+
+    --> local config
+    use "klen/nvim-config-local"
+    use 'editorconfig/editorconfig-vim'
 
     --> context highlighting
     use {
