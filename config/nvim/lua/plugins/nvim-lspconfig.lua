@@ -1,4 +1,6 @@
 local on_attach = function(client, bufnr)
+    require("lsp-format").on_attach(client, bufnr)
+
     local opts = { buffer = bufnr }
     vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
@@ -21,30 +23,6 @@ local on_attach = function(client, bufnr)
 
     vim.api.nvim_create_user_command("LspRename", "lua vim.lsp.buf.rename()", {
         desc = "Rename a symbol using attached language-server"
-    })
-
-    local lsp_format = function(data)
-        local lsp_opts = {
-            async = true
-        }
-
-        for k, v in pairs(opts) do
-            lsp_opts[k] = v
-        end
-
-        if data.range > 0 then
-            lsp_opts.range = {
-                ["start"] = { data.line1, 0 },
-                ["end"] = { data.line2, 0 },
-            }
-        end
-
-        vim.lsp.buf.format(lsp_opts)
-    end
-
-    vim.api.nvim_create_user_command("LspFormat", lsp_format, {
-        desc = "Format buffer using attached language-server.",
-        range = true
     })
 
     -- Disable syntax highlighting through LSP.
@@ -101,3 +79,18 @@ lspconfig.clojure_lsp.setup({
     on_attach = on_attach,
     capabilities = capabilities
 })
+
+local languages = require 'plugins.efm-languages'
+lspconfig.efm.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    init_options = { documentFormatting = true },
+    root_dir = vim.loop.cwd,
+    filetypes = vim.tbl_keys(languages),
+    settings = {
+        rootMarkers = { ".git/" },
+        lintDebounce = 100,
+        logLevel = 5,
+        languages = languages,
+    },
+}

@@ -6,4 +6,3 @@ vim.opt.softtabstop = 4         -- See multiple spaces as tabstops so <BS> does 
 vim.opt.background = 'dark'     -- Set background to dark
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.exrc = true
-

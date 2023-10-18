@@ -15,14 +15,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
--- Autocommand that reloads Neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost lua/plugins/init.lua source <afile> | PackerSync
-  augroup end
-]]
-
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
@@ -60,7 +52,9 @@ return packer.startup(function(use)
     --> colorscheme
     use {
         'morhetz/gruvbox',
-        config = function() vim.cmd.colorscheme("gruvbox") end
+        config = function()
+            vim.cmd.colorscheme("gruvbox")
+        end
     }
 
     --> fuzzy finder
@@ -93,13 +87,22 @@ return packer.startup(function(use)
 
     --> lsp, linters, dignostics
     use {
+        "lukas-reineke/lsp-format.nvim",
+        config = "require 'plugins.lsp-format'"
+    }
+    use {
         'neovim/nvim-lspconfig',
         config = "require 'plugins.nvim-lspconfig'"
     }
     use {
         'williamboman/mason.nvim', --> :Mason
+        config = function()
+            require("mason").setup()
+        end
+    }
+    use {
         'williamboman/mason-lspconfig.nvim',
-        config = "require 'plugins.mason'",
+        config = "require 'plugins.mason-lspconfig'",
         run = ':MasonUpdate' -- :MasonUpdate updates registry contents
     }
 
