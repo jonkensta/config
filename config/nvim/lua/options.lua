@@ -5,3 +5,5 @@ vim.opt.shiftwidth = 4          -- Width for autoindents
 vim.opt.softtabstop = 4         -- See multiple spaces as tabstops so <BS> does the right thing
 vim.opt.background = 'dark'     -- Set background to dark
 vim.opt.completeopt = "menuone,noselect"
+vim.opt.exrc = true
+

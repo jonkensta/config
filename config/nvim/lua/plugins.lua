@@ -1,5 +1,3 @@
---[ plugins.lua ]--
-
 local fn = vim.fn
 
 -- Automatically install Packer
@@ -42,7 +40,7 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-    --> run manually with ':PackerSync'
+    --> package manager, run manually with ':PackerSync'
     use 'wbthomason/packer.nvim'
 
     --> tpope's vim packages
@@ -52,20 +50,23 @@ return packer.startup(function(use)
         'tpope/vim-fugitive',
     }
 
-    --> quality of life
-    use 'ctrlpvim/ctrlp.vim'
-    use 'itchyny/lightline.vim'
-    use 'morhetz/gruvbox'
+    --> file explorer
     use 'scrooloose/nerdtree'
+
+    --> statusline
     use 'vim-airline/vim-airline'
 
+    --> colorscheme
+    use 'morhetz/gruvbox'
+
+    --> fuzzy finder
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     --> local config
-    use "klen/nvim-config-local"
+    use 'klen/nvim-config-local'
     use 'editorconfig/editorconfig-vim'
 
     --> context highlighting
@@ -75,28 +76,36 @@ return packer.startup(function(use)
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
         end,
+        config = "require 'plugins.nvim-treesitter'"
     }
-    use 'HiPhish/rainbow-delimiters.nvim'
+    use {
+        'HiPhish/rainbow-delimiters.nvim',
+        config = "require 'plugins.rainbow-delimiters'"
+    }
 
     --> lsp, linters, dignostics
     use {
+        'neovim/nvim-lspconfig',
+        config = "require 'plugins.nvim-lspconfig'"
+    }
+    use {
         'williamboman/mason.nvim', --> :Mason
         'williamboman/mason-lspconfig.nvim',
-        'neovim/nvim-lspconfig',
-        run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+        run = ':MasonUpdate' -- :MasonUpdate updates registry contents
     }
 
     --> autocomplete + snippets
+    use 'hrsh7th/cmp-nvim-lsp'
     use {
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/nvim-cmp',
-        'hrsh7th/cmp-vsnip',
         'hrsh7th/vim-vsnip',
-        'rafamadriz/friendly-snippets',
+        config = "require 'plugins.vim-vsnip'"
     }
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-vsnip'
+    use 'rafamadriz/friendly-snippets'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
@@ -104,5 +113,3 @@ return packer.startup(function(use)
         require('packer').sync()
     end
 end)
-
---[ eof ]--
