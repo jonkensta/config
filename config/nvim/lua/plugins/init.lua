@@ -93,14 +93,6 @@ return packer.startup(function(use)
 
     --> lsp, linters, dignostics
     use {
-        "lukas-reineke/lsp-format.nvim",
-        config = "require 'plugins.lsp-format'"
-    }
-    use {
-        'neovim/nvim-lspconfig',
-        config = "require 'plugins.nvim-lspconfig'"
-    }
-    use {
         'williamboman/mason.nvim', --> :Mason
         config = function()
             require("mason").setup()
@@ -110,6 +102,14 @@ return packer.startup(function(use)
         'williamboman/mason-lspconfig.nvim',
         config = "require 'plugins.mason-lspconfig'",
         run = ':MasonUpdate' -- :MasonUpdate updates registry contents
+    }
+    use {
+        "lukas-reineke/lsp-format.nvim",
+        config = "require 'plugins.lsp-format'"
+    }
+    use {
+        'neovim/nvim-lspconfig',
+        config = "require 'plugins.nvim-lspconfig'"
     }
 
     --> autocomplete + snippets
