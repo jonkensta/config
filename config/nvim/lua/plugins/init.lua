@@ -64,6 +64,12 @@ return packer.startup(function(use)
         config = "require 'plugins.telescope'",
     }
 
+    --> gitgutter
+    use {
+        "airblade/vim-gitgutter",
+        config = "require 'plugins.vim-gitgutter'",
+    }
+
     --> local config
     use {
         'klen/nvim-config-local',
