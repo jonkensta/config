@@ -90,14 +90,6 @@ chsh -s /bin/zsh
 
 You may need to fix the symlink to .zshrc if it is overwritten.
 
-## Vundle
-
-```bash
-mkdir -p ~/.config/nvim/bundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
-nvim +PluginInstall +qall
-```
-
 ## Packer
 
 ```bash
