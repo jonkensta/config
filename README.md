@@ -75,20 +75,10 @@ dhcpcd iwd \
 git vim neovim tmux
 ```
 
-Other useful packages:
+Other useful packages are located in `pacman/packages.txt`:
 
 ```bash
-i3-wm i3lock i3status \
-git vi vim neovim tmux \
-wget moreutils inetutils base-devel \
-powerline ttf-font-awesome \
-sudo xdg-user-dirs-update \
-xbindkeys xorg-xmodmap \
-xfce4-screenshooter xfce4-terminal \
-redshift inetutils cbatticon network-manager-applet udiskie \
-zsh zsh-syntax-highlighting zsh-completions zsh-autosuggestions \
-cpupower intel-ucode thermald \
-mlocate fzf
+sudo pacman -U --needed - < pacman/packages.txt
 ```
 
 ## Install oh-my-zsh
