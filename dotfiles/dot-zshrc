@@ -67,16 +67,12 @@ done
 # System Z configuration
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
+# System ZSH plugins
 for plugin in "autosuggestions" "syntax-highlighting" "history-substring-search";
 do
-    local filepath=/usr/share/zsh/plugins/zsh-$plugin.zsh
+    local filepath=/usr/share/zsh/plugins/zsh-$plugin/zsh-$plugin.zsh
     [[ -f $filepath ]] && source $filepath
 done
-
-# System ZSH plugins
-[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[ -f /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh ] && source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 export MANPATH="/usr/local/man:$MANPATH"
 
