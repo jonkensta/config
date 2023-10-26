@@ -104,3 +104,6 @@ z() {
   [ $# -gt 0 ] && _z "$*" && return
   cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
 }
+
+# use kitty alias to copy terminfo when connecting to a remote
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
