@@ -57,6 +57,9 @@ return packer.startup(function(use)
         end
     }
 
+    --> github copilot
+    use "github/copilot.vim"
+
     --> fuzzy finder
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
