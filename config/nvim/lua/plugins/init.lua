@@ -42,7 +42,8 @@ return packer.startup(function(use)
 
     --> file explorer
     use {
-        'scrooloose/nerdtree',
+        'preservim/nerdtree',
+        tag = "6.10.16",
         config = "require 'plugins.nerdtree'",
     }
 
