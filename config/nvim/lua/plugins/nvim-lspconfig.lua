@@ -80,6 +80,8 @@ lspconfig.clojure_lsp.setup({
     capabilities = capabilities
 })
 
+lspconfig.marksman.setup {}
+
 local languages = require 'plugins.efm-languages'
 lspconfig.efm.setup {
     capabilities = capabilities,

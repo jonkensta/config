@@ -5,6 +5,7 @@ require("mason-lspconfig").setup({
         "lua_ls",
         "pylsp",
         "efm",
+        "marksman",
         "rust_analyzer",
         "clojure_lsp",
     },
