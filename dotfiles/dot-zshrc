@@ -74,6 +74,13 @@ do
     [[ -f $filepath ]] && source $filepath
 done
 
+# System Google Cloud SDK
+for include in "path" "completion";
+do
+    local filepath=/opt/google-cloud-cli/$include.zsh.inc
+    [[ -f $filepath ]] && source $filepath
+done
+
 export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
