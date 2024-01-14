@@ -1,5 +1,6 @@
 local eslint = {
-    lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}",
+    lintCommand =
+    [[$([ -n "$(command -v node_modules/.bin/eslint)" ] && echo "node_modules/.bin/eslint" || echo "eslint") -f visualstudio --stdin --stdin-filename ${INPUT}]],
     lintIgnoreExitCode = true,
     lintStdin = true,
     lintFormats = {
@@ -10,7 +11,8 @@ local eslint = {
 }
 
 local prettier = {
-    formatCommand = [[$([ -n "$(command -v node_modules/.bin/prettier)" ] && echo "node_modules/.bin/prettier" || echo "prettier") --stdin-filepath ${INPUT} ${--config-precedence:configPrecedence} ${--tab-width:tabWidth} ${--single-quote:singleQuote} ${--trailing-comma:trailingComma}]],
+    formatCommand =
+    [[$([ -n "$(command -v node_modules/.bin/prettier)" ] && echo "node_modules/.bin/prettier" || echo "prettier") --stdin-filepath ${INPUT} ${--config-precedence:configPrecedence} ${--tab-width:tabWidth} ${--single-quote:singleQuote} ${--trailing-comma:trailingComma}]],
     formatStdin = true,
 }
 
@@ -26,4 +28,3 @@ return {
     css = { prettier },
     markdown = { prettier },
 }
-
