@@ -82,17 +82,8 @@ lspconfig.clojure_lsp.setup({
 
 lspconfig.marksman.setup {}
 
-local languages = require 'plugins.efm-languages'
-lspconfig.efm.setup {
-    capabilities = capabilities,
+local efmls_config = require('plugins.efm-languages')
+lspconfig.efm.setup(vim.tbl_extend('force', efmls_config, {
     on_attach = on_attach,
-    init_options = { documentFormatting = true },
-    root_dir = vim.loop.cwd,
-    filetypes = vim.tbl_keys(languages),
-    settings = {
-        rootMarkers = { ".git/" },
-        lintDebounce = 100,
-        logLevel = 5,
-        languages = languages,
-    },
-}
+    capabilities = capabilities,
+}))

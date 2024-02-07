@@ -16,15 +16,37 @@ local prettier = {
     formatStdin = true,
 }
 
-return {
-    typescript = { prettier, eslint },
-    javascript = { prettier, eslint },
-    typescriptreact = { prettier, eslint },
-    javascriptreact = { prettier, eslint },
-    yaml = { prettier },
-    json = { prettier },
+local pylint = require("efmls-configs.linters.pylint")
+local mypy = require("efmls-configs.linters.mypy")
+local isort = require('efmls-configs.formatters.isort')
+local black = require('efmls-configs.formatters.black')
+
+local defaults = require('efmls-configs.defaults');
+local languages = vim.tbl_extend('force', defaults.languages(), {
+    javascript = { eslint, prettier },
+    javascriptreact = { eslint, prettier },
+    typescript = { eslint, prettier },
+    typescriptreact = { eslint, prettier },
+    vue = { eslint, prettier },
     html = { prettier },
-    scss = { prettier },
     css = { prettier },
+    json = { prettier },
     markdown = { prettier },
+    scss = { prettier },
+    yaml = { prettier },
+    graphql = { prettier },
+    svelte = { prettier },
+    python = { isort, black, pylint, mypy },
+});
+
+return {
+    filetypes = vim.tbl_keys(languages),
+    settings = {
+        rootMarkers = { '.git/' },
+        languages = languages,
+    },
+    init_options = {
+        documentFormatting = true,
+        documentRangeFormatting = true,
+    },
 }

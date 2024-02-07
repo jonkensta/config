@@ -116,6 +116,11 @@ return packer.startup(function(use)
         after = "nvim-lspconfig",
         config = "require 'plugins.lsp-format'"
     }
+    use {
+        'creativenull/efmls-configs-nvim',
+        tag = 'v1.*', -- tag is optional, but recommended
+        requires = { 'neovim/nvim-lspconfig' },
+    }
 
     --> autocomplete + snippets
     use 'hrsh7th/cmp-nvim-lsp'
