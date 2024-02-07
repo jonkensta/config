@@ -25,9 +25,6 @@ require("lsp-format").setup {
         trailingComma = "all",
         configPrecedence = "prefer-file",
     },
-    python = {
-        lineLength = 120,
-    },
     markdown = prettier,
     sh = {
         tabWidth = 4,
