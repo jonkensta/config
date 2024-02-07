@@ -51,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux colorize colored-man-pages python vi-mode virtualenv zsh-256color systemd fzf)
+plugins=(archlinux colorize colored-man-pages python vi-mode virtualenv systemd fzf)
 
 source $ZSH/oh-my-zsh.sh
 
