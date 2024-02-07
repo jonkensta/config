@@ -4,7 +4,6 @@ alsa-firmware
 alsa-lib
 alsa-tools
 alsa-utils
-archlinux-java-run
 arduino
 arduino-avr-core
 arduino-cli
@@ -27,9 +26,7 @@ bluez
 bluez-plugins
 bluez-tools
 bluez-utils
-brave-bin
 brightnessctl
-brother-hll2380dw
 buildbot
 buildbot-worker
 bzip2
@@ -37,7 +34,6 @@ cbatticon
 certbot-nginx
 chromium
 clojure
-clojure-lsp-bin
 cmake
 colordiff
 coreutils
@@ -46,12 +42,10 @@ cppcheck
 cryptsetup
 ctags
 cups
-cura-bin
 cython
 deluge
 device-mapper
 dhcpcd
-dia
 diffutils
 dmenu
 docker
@@ -61,7 +55,6 @@ doxygen
 dpdk
 dtc
 duplicity
-dymo-cups-drivers
 e2fsprogs
 efibootmgr
 efitools
@@ -78,7 +71,6 @@ file
 filesystem
 findutils
 firefox
-fixjson
 flake8
 flex
 foomatic-db-nonfree-ppds
@@ -96,19 +88,16 @@ github-cli
 glfw-x11
 glibc
 gnome-keyring
-google-cloud-cli
 gparted
 gperf
 gptfdisk
 graphviz
 grep
-grml-systemd-boot
 groff
 gtkwave
 gvfs-google
 gzip
 handbrake-cli
-heroku-cli
 htmlhint
 htop
 i2c-tools
@@ -127,19 +116,13 @@ iputils
 ipython
 iverilog
 iw
-jdk11
 jedi-language-server
 jfsutils
-joker-bin
 jq
-jre11
-jre11-openjdk
-jre11-openjdk-headless
 jupyter-console
 jupyter-notebook
 kicad
 kicad-library
-ledger-udev
 leiningen
 less
 libconfig
@@ -161,7 +144,6 @@ m4
 make
 man-db
 man-pages
-masterpdfeditor
 mbedtls
 mdadm
 mesa
@@ -188,7 +170,6 @@ ntp
 nut
 ode
 opencv
-openocd-git
 openscad
 openssh
 openvpn
@@ -204,8 +185,6 @@ perl-string-crc32
 picocom
 pigz
 pkgconf
-platformio
-platformio-udev-rules
 powerline
 powerline-fonts
 powertop
@@ -389,7 +368,6 @@ xscreensaver
 xss-lock
 yarn
 yasm
-yay
 z
 zathura
 zathura-pdf-mupdf
