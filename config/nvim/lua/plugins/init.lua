@@ -78,7 +78,6 @@ return packer.startup(function(use)
         'klen/nvim-config-local',
         config = "require 'plugins.config-local'",
     }
-    use 'editorconfig/editorconfig-vim'
 
     --> context highlighting
     use {
