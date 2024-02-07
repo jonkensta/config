@@ -107,7 +107,7 @@ Then `prefix` + <kdb>I</kdb> within tmux to install plugins.
 
 ## User groups
 
-After installing `xdg-user-dirs-update`:
+After installing `xdg-user-dirs`:
 
 ```bash
 sudo systemctl enable --now xdg-user-dirs-update.service
