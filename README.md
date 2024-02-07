@@ -184,3 +184,16 @@ Open `/etc/dhcpcd.conf` and uncomment the following:
 # Inform the DHCP server of our hostname for DDNS.
 hostname
 ```
+
+## Disable `root` user
+
+Remove the root password:
+
+```bash
+sudo passwd -d root
+```
+
+Lock the account:
+```bash
+sudo passwd -l root
+```
