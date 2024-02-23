@@ -18,11 +18,12 @@ local prettier = {
 
 local pylint = require("efmls-configs.linters.pylint")
 local mypy = require("efmls-configs.linters.mypy")
-local isort = require('efmls-configs.formatters.isort')
-local black = require('efmls-configs.formatters.black')
+local isort = require("efmls-configs.formatters.isort")
+local black = require("efmls-configs.formatters.black")
+local jq = require("efmls-configs.formatters.jq")
 
-local defaults = require('efmls-configs.defaults');
-local languages = vim.tbl_extend('force', defaults.languages(), {
+local defaults = require("efmls-configs.defaults");
+local languages = vim.tbl_extend("force", defaults.languages(), {
     javascript = { eslint, prettier },
     javascriptreact = { eslint, prettier },
     typescript = { eslint, prettier },
@@ -30,7 +31,7 @@ local languages = vim.tbl_extend('force', defaults.languages(), {
     vue = { eslint, prettier },
     html = { prettier },
     css = { prettier },
-    json = { prettier },
+    json = { jq, prettier },
     markdown = { prettier },
     scss = { prettier },
     yaml = { prettier },
@@ -42,7 +43,7 @@ local languages = vim.tbl_extend('force', defaults.languages(), {
 return {
     filetypes = vim.tbl_keys(languages),
     settings = {
-        rootMarkers = { '.git/' },
+        rootMarkers = { ".git/" },
         languages = languages,
     },
     init_options = {
