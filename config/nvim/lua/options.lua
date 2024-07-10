@@ -6,3 +6,5 @@ vim.opt.softtabstop = 4     -- See multiple spaces as tabstops so <BS> does the 
 vim.opt.background = 'dark' -- Set background to dark
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.exrc = true
+vim.opt.number = true         -- Show current line numbe
+vim.opt.relativenumber = true -- Show relative line number
