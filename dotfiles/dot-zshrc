@@ -118,3 +118,6 @@ eval "$(zoxide init zsh)"
 
 # use kitty alias to copy terminfo when connecting to a remote
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
+# Set i3-sensible-terminal to kitty.
+export TERMINAL=kitty

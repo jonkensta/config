@@ -176,5 +176,3 @@ exec nm-applet
 exec cbatticon
 exec xbindkeys
 exec udiskie -s
-exec setxkbmap -option ctrl:nocaps
-exec setxkbmap -option compose:ralt
