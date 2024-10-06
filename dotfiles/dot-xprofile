@@ -1,7 +1,4 @@
 #!/bin/sh
-# Script to configure X, start common apps, and start xmonad.
-# Author: Vic Fryzel
-# http://github.com/vicfryzel/xmonad-config
 
 # java behaves badly in non-reparenting window managers (e.g. xmonad)
 export _JAVA_AWT_WM_NONREPARENTING=1
