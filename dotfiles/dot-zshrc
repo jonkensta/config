@@ -101,11 +101,17 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-# command alises
-alias ls='exa'
-alias ll='exa --long --header --git'
-alias tree='exa --tree'
-alias cat='bat'
+# Check for 'eza' (modern replacement for ls)
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza'
+  alias ll='eza --long --header --git'
+  alias tree='eza --tree'
+fi
+
+# Check for 'bat' (modern replacement for cat)
+if command -v bat >/dev/null 2>&1; then
+  alias cat='bat'
+fi
 
 # export local paths
 [ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
