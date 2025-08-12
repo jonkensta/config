@@ -123,8 +123,9 @@ require("lazy").setup({
 		"williamboman/mason.nvim",
 		opts = {
 			ensure_installed = {
+				"isort",
+				"black",
 				"stylua",
-				"lua_ls",
 				"shellcheck",
 				"shfmt",
 				"flake8",
@@ -319,7 +320,10 @@ vim.defer_fn(function()
 			"vimdoc",
 			"vim",
 		},
+		modules = {},
+		sync_install = false,
 		auto_install = true,
+		ignore_install = {},
 		highlight = { enable = true },
 		indent = { enable = true },
 		incremental_selection = {
@@ -382,7 +386,7 @@ end, 0)
 --  This function gets run when an LSP server attaches to a particular buffer.
 --    That's why we created the keymaps in this callack, so that they only apply
 --    to the buffers that have LSP servers attached.
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
 	-- NOTE: Remember that lua is a real programming language, and as such it is possible
 	-- to define small helper functions to reduce redundant code.
 	local nmap = function(keys, func, desc)
@@ -419,55 +423,78 @@ local on_attach = function(client, bufnr)
 end
 
 -- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here.
---
---  Add any additional override configuration in the following tables. Available keys are:
---  - cmd (table): Override the default command used to start the server
---  - filetypes (table): Override the default list of associated filetypes for the server
---  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
---  - settings (table): Override the default settings passed when initializing the server.
---        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+
 local servers = {
-	-- rust_analyzer = {},
-	gopls = {},
-	-- pyright = {},
+	-- JS/TS
 	ts_ls = {},
+	eslint = {},
+	-- Python
+	basedpyright = {}, -- or pyright = {}
+	-- Others
+	gopls = {},
 	marksman = {},
-	-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-	--
-	-- Some languages (like typescript) have entire plugins that can be useful:
-	--    https://github.com/pmizio/typescript-tools.nvim
-	--
-	-- But for most languages, the provided LSP server will work just fine
 	lua_ls = {
 		Lua = {
-			diagnostics = {
-				globals = { "vim" },
+			runtime = { version = "LuaJIT" },
+			diagnostics = { globals = { "vim" } },
+			workspace = {
+				checkThirdParty = false,
+				library = vim.api.nvim_get_runtime_file("", true),
 			},
-			telemetry = {
-				enable = false,
-			},
+			telemetry = { enable = false },
 		},
 	},
 }
 
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- Setup mason-lspconfig
+for server, settings in pairs(servers) do
+	lspconfig[server].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+		settings = settings,
+	})
+end
+
+-- Mason (tools only)
+require("mason").setup({})
 require("mason-lspconfig").setup({
-	-- A list of servers to install if they're not already installed
 	ensure_installed = vim.tbl_keys(servers),
-	-- This is the handler that will be called for each server that is installed
-	handlers = {
-		function(server_name)
-			require("lspconfig")[server_name].setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-				settings = servers[server_name],
-			})
-		end,
+})
+
+local util = require("conform.util")
+
+-- Conform (formatters)
+require("conform").setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+		python = { "isort", "black" },
+		sh = { "shfmt" },
+		javascript = { "prettierd", "prettier" },
+		javascriptreact = { "prettierd", "prettier" },
+		typescript = { "prettierd", "prettier" },
+		typescriptreact = { "prettierd", "prettier" },
+		json = { "prettierd", "prettier" },
+	},
+	format_on_save = {
+		lsp_fallback = true, -- if no formatter, fall back to LSP
+		timeout_ms = 500,
+	},
+	formatters = {
+		-- Prefer repo-local binaries
+		prettierd = {
+			prefer_local = "node_modules/.bin",
+			cwd = util.root_file({ "package.json", ".prettierrc", ".prettierrc.js", "prettier.config.js" }),
+		},
+		prettier = {
+			prefer_local = "node_modules/.bin",
+			cwd = util.root_file({ "package.json", ".prettierrc", ".prettierrc.js", "prettier.config.js" }),
+		},
+		eslint_d = {
+			prefer_local = "node_modules/.bin",
+			cwd = util.root_file({ "package.json", ".eslintrc", ".eslintrc.js" }),
+		},
 	},
 })
 
@@ -529,18 +556,6 @@ cmp.setup.cmdline("/", {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
 		{ name = "buffer" },
-	},
-})
-
-require("conform").setup({
-	formatters_by_ft = {
-		lua = { "stylua" },
-		-- Conform will run multiple formatters sequentially
-		python = { "isort", "black" },
-		-- You can customize some of the format options for the filetype (:help conform.format)
-		rust = { "rustfmt", lsp_format = "fallback" },
-		-- Conform will run the first available formatter
-		javascript = { "prettierd", "prettier", stop_after_first = true },
 	},
 })
 
