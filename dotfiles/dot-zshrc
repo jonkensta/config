@@ -146,6 +146,9 @@ export npm_config_prefix="$HOME/.local"
 # init zoxide if available
 command -v zoxide 2>&1 >/dev/null && eval "$(zoxide init zsh)"
 
+# init shell autocompletion for uv commands
+command -v uv 2>&1 >/dev/null && eval "$(uv generate-shell-completion zsh)"
+
 # Set i3-sensible-terminal to kitty
 export TERMINAL=kitty
 
