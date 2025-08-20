@@ -154,3 +154,5 @@ export TERMINAL=kitty
 
 # use kitty alias to copy terminfo when connecting to a remote
 command -v kitty 2>&1 >/dev/null && [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
+[ -d /usr/share/pico-sdk ] && export PICO_SDK_PATH=/usr/share/pico-sdk
