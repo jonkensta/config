@@ -6,6 +6,22 @@ return {
     opts = {},
   },
 
+  -- Mason-LSPConfig bridge
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    opts = {
+      ensure_installed = {
+        "lua_ls",
+        "ts_ls",
+        "basedpyright",
+        "gopls",
+        "marksman",
+      },
+      automatic_installation = true,
+    },
+  },
+
   -- LSP Configuration
   {
     "neovim/nvim-lspconfig",
