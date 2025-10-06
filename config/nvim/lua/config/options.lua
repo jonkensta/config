@@ -26,3 +26,8 @@ opt.timeoutlen = 300
 
 -- Completion
 opt.completeopt = "menuone,noselect"
+
+-- Command-line completion
+opt.wildmenu = true
+opt.wildmode = "longest:full,full"
+opt.wildignorecase = true
