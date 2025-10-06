@@ -61,7 +61,6 @@ return {
           },
         },
         ts_ls = {},
-        eslint = {},
         basedpyright = {},
         gopls = {},
         marksman = {},
