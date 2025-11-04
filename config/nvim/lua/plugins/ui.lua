@@ -1,52 +1,52 @@
 return {
-  -- Colorscheme
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme("tokyonight")
-    end,
-  },
-
-  -- Status line
-  {
-    "nvim-lualine/lualine.nvim",
-    opts = {
-      options = {
-        icons_enabled = false,
-        component_separators = "|",
-        section_separators = "",
-      },
+    -- Colorscheme
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.cmd.colorscheme("tokyonight")
+        end,
     },
-  },
 
-  -- Git signs
-  {
-    "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {},
-  },
+    -- Status line
+    {
+        "nvim-lualine/lualine.nvim",
+        opts = {
+            options = {
+                icons_enabled = false,
+                component_separators = "|",
+                section_separators = "",
+            },
+        },
+    },
 
-  -- Indent guides
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    main = "ibl",
-    opts = {},
-  },
+    -- Git signs
+    {
+        "lewis6991/gitsigns.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        opts = {},
+    },
 
-  -- Which-key
-  {
-    "folke/which-key.nvim",
-    event = "VimEnter",
-    opts = {},
-  },
+    -- Indent guides
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        main = "ibl",
+        opts = {},
+    },
 
-  -- Trouble diagnostics
-  {
-    "folke/trouble.nvim",
-    cmd = "Trouble",
-    opts = {},
-  },
+    -- Which-key
+    {
+        "folke/which-key.nvim",
+        event = "VimEnter",
+        opts = {},
+    },
+
+    -- Trouble diagnostics
+    {
+        "folke/trouble.nvim",
+        cmd = "Trouble",
+        opts = {},
+    },
 }
