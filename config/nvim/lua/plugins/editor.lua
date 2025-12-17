@@ -44,11 +44,26 @@ return {
         end,
     },
 
-    -- File explorer (replacing nvim-tree)
+    -- File explorer
     {
-        "stevearc/oil.nvim",
-        cmd = "Oil",
-        opts = {},
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        cmd = "Neotree",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+        },
+        opts = {
+            close_if_last_window = true,
+            filesystem = {
+                follow_current_file = { enabled = true },
+                use_libuv_file_watcher = true,
+            },
+            window = {
+                position = "left",
+                width = 30,
+            },
+        },
     },
 
     -- Comments
@@ -83,8 +98,17 @@ return {
 
     -- Git integration
     {
-        "tpope/vim-fugitive",
-        cmd = { "Git", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GDelete", "GBrowse" },
+        "NeogitOrg/neogit",
+        cmd = "Neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "sindrets/diffview.nvim",
+        },
+        opts = {
+            integrations = {
+                diffview = true,
+            },
+        },
     },
 
     -- Sleuth (auto-detect indentation)
