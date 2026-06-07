@@ -11,12 +11,12 @@ order += "tztime local"
 
 cpu_temperature 0 {
     format = " %degrees°C"
-    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input"
     separator = false
 }
 
 memory {
-    format = " %used"
+    format = " %used"
     separator = false
 }
 
