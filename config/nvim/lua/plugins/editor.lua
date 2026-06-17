@@ -1,31 +1,53 @@
 return {
-    -- Treesitter
+    -- Treesitter (main branch — required for Neovim 0.12+)
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "main",
+        lazy = false,
         build = ":TSUpdate",
-        event = { "BufReadPre", "BufNewFile" },
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter-textobjects",
-        },
         config = function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = { "lua", "vim", "vimdoc", "python", "javascript", "typescript", "java" },
-                auto_install = true,
-                highlight = { enable = true },
-                indent = { enable = true },
-                textobjects = {
-                    select = {
-                        enable = true,
-                        lookahead = true,
-                        keymaps = {
-                            ["af"] = "@function.outer",
-                            ["if"] = "@function.inner",
-                            ["ac"] = "@class.outer",
-                            ["ic"] = "@class.inner",
-                        },
-                    },
-                },
+            require("nvim-treesitter").install({
+                "lua",
+                "vim",
+                "vimdoc",
+                "python",
+                "javascript",
+                "typescript",
             })
+
+            -- Enable highlighting and indentation per buffer. start() looks up
+            -- the parser by filetype and errors if none is installed, so pcall
+            -- keeps unsupported filetypes a no-op.
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function(args)
+                    if pcall(vim.treesitter.start, args.buf) then
+                        vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                    end
+                end,
+            })
+        end,
+    },
+
+    -- Treesitter text objects (main branch)
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "main",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        config = function()
+            require("nvim-treesitter-textobjects").setup({
+                select = { lookahead = true },
+            })
+
+            local select = require("nvim-treesitter-textobjects.select")
+            local map = function(key, obj)
+                vim.keymap.set({ "x", "o" }, key, function()
+                    select.select_textobject(obj, "textobjects")
+                end, { desc = "Select " .. obj })
+            end
+            map("af", "@function.outer")
+            map("if", "@function.inner")
+            map("ac", "@class.outer")
+            map("ic", "@class.inner")
         end,
     },
 
