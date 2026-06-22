@@ -18,6 +18,7 @@ return {
                 "basedpyright",
                 "gopls",
                 "marksman",
+                "jdtls",
             },
             automatic_installation = true,
         },
@@ -65,6 +66,7 @@ return {
                 basedpyright = {},
                 gopls = {},
                 marksman = {},
+                jdtls = {},
             }
 
             -- Setup servers
