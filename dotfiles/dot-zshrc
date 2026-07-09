@@ -156,3 +156,10 @@ export TERMINAL=kitty
 command -v kitty 2>&1 >/dev/null && [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
 [ -d /usr/share/pico-sdk ] && export PICO_SDK_PATH=/usr/share/pico-sdk
+
+# Flatpak XDG data dirs (for .desktop/icon discovery)
+[ -f /etc/profile.d/flatpak.sh ] && source /etc/profile.d/flatpak.sh
+
+# Flatpak bin paths
+[ -d "${XDG_DATA_HOME:-$HOME/.local/share}/flatpak/exports/bin" ] && export PATH="${XDG_DATA_HOME:-$HOME/.local/share}/flatpak/exports/bin:$PATH"
+[ -d /var/lib/flatpak/exports/bin ] && export PATH="/var/lib/flatpak/exports/bin:$PATH"
