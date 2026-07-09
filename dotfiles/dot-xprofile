@@ -8,3 +8,6 @@ setxkbmap -option caps:escape
 
 # Remap right alt to compose key
 setxkbmap -option compose:ralt
+
+eval $(gnome-keyring-daemon --start --components=secrets)
+export SSH_AUTH_SOCK
