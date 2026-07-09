@@ -20,6 +20,7 @@ require("config.autocmds")
 -- Setup plugins
 require("lazy").setup({
     { import = "plugins.lsp" },
+    { import = "plugins.java" },
     { import = "plugins.ui" },
     { import = "plugins.editor" },
 }, {

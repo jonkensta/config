@@ -21,6 +21,10 @@ return {
                 "jdtls",
             },
             automatic_installation = true,
+            -- jdtls is launched and configured by nvim-jdtls (plugins/java.lua);
+            -- exclude it here so mason-lspconfig doesn't auto-enable a second,
+            -- conflicting instance via vim.lsp.enable.
+            automatic_enable = { exclude = { "jdtls" } },
         },
     },
 
@@ -66,7 +70,6 @@ return {
                 basedpyright = {},
                 gopls = {},
                 marksman = {},
-                jdtls = {},
             }
 
             -- Setup servers

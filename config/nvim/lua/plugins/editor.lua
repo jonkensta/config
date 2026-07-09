@@ -13,6 +13,7 @@ return {
                 "python",
                 "javascript",
                 "typescript",
+                "java",
             })
 
             -- Enable highlighting and indentation per buffer. start() looks up
