@@ -119,6 +119,15 @@ return {
         keys = { "." },
     },
 
+    -- Git diff viewer (also backs Neogit's diff views); own triggers so
+    -- :DiffviewOpen works without opening Neogit first
+    {
+        "sindrets/diffview.nvim",
+        cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {},
+    },
+
     -- Git integration
     {
         "NeogitOrg/neogit",
